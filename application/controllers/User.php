@@ -6,6 +6,9 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model("Data_model");
+		if (!$this->Data_model->is_login()) {
+			redirect("auth/login");
+		}
 	}
 	public function index()
 	{

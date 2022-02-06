@@ -45,4 +45,36 @@ class Data_model extends CI_Model
             return 0;
         }
     }
+    public function is_login()
+    {
+        $login = $this->session->userdata("login");
+        if(!empty($login))
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function do_login()
+    {
+        $post = $this->input->post();
+        if(!empty($post))
+        {
+            $email = $post["email"];
+            $password = $post["password"];
+
+            $user = $this->db->query("SELECT * FROM user WHERE email = ?", $email)->row_array();
+            if(!empty($user))
+            {
+                if ($user["password"] == $password) {
+                    $this->session->set_userdata("login", $user);
+                    redirect(base_url("index.php/user/index"));
+                }else{
+                    return "Maaf, Password Anda Salah!";
+                }
+            }else{
+                return "Maaf, Email Belum Terdaftar Atau Salah";
+            }
+        }
+    }
 }
