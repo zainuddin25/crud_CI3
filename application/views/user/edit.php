@@ -48,7 +48,7 @@
                         <label for="" class="form-label">Password</label>
                         <input type="password" class="form-control" name="password" value="<?php echo $data["password"] ?>">
                         <div class="mt-3">
-                          <button type="submit" class="btn btn-outline-primary">Simpan</button>
+                          <button type="submit" class="btn btn-outline-primary">Simpan Data</button>
                         </div>
                       </form>
                     </div>
